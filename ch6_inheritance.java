@@ -27,7 +27,7 @@ abstract class Bicycle {
     }
 
     abstract void default_tire_size();
-    abstract void local_spares();
+    abstract void local_spares(String s);
 
     void post_initialize(String ... var) {
 
@@ -35,28 +35,28 @@ abstract class Bicycle {
 }
 class RoadBike extends Bicycle {
 
-    String tape_color;
+    public String tape_color;
 
-    void default_tire_size() {
-        tire_size = 23;
+    public String default_tire_size() {
+        return "23";
     }
 
     void post_initialize(String s) {
         tape_color = s;
     }
 
-    void local_spares() {
-        System.out.println(tape_color);
+    void local_spares(String s) {
+        tape_color=s;
     }
 }
 
 class MountainBike extends Bicycle {
 
-    String front_shock;
-    String rear_shock;
+    public String front_shock;
+    public String rear_shock;
 
-    void default_tire_size() {
-        tire_size = 2.1;
+    public String default_tire_size() {
+        return  "2.1";
     }
 
     void post_initialize(String ... arg) {
@@ -69,8 +69,55 @@ class MountainBike extends Bicycle {
         }
     }
 
-    void local_spares() {
-        System.out.println(front_shock);
+    void local_spares(String s) {
+        front_shock=s;
     }
 }
+
+// class RecumbentBike < Bicycle attr_reader :flag
+// def post_initialize(args) @flag = args[:flag]
+// end
+// def local_spares {flag: flag}
+// end
+// def default_chain "9-speed"
+// end
+// def default_tire_size '28'
+// end end
+
+class RecumbentBike extends Bicycle{
+	public String flag;
+
+    String default_tire_size() {
+        return  "28";
+    }
+
+    void post_initialize(String ... s) {
+        flag=s[0];
+    }
+
+    void local_spares(String flag) {
+    	   flag=flag; 
+    }
+    String default_chain(){
+    	return "9-speed";
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
